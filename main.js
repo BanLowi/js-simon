@@ -15,9 +15,11 @@ const numberFiveEl = document.getElementById("numberFive");
 const buttonEl = document.querySelector("button.d-none");
 
 
-// Variabile contatore
-let counter = 0;
+// Variabili contatore
+let counter = 30;
 console.log(counter);
+const timerEl = document.getElementById("timer")
+const clock = setInterval(displayCounter, 1000)
 
 
 // Array numeri random
@@ -40,11 +42,36 @@ randomNumbers = [
 
 
 // Inserisco un numero random da 1 a 100 in ogni elemento
-numberOneEl.innerHTML = randomNumbers[0];
-numberTwoEl.innerHTML = randomNumbers[1];
-numberThreeEl.innerHTML = randomNumbers[2];
-numberFourEl.innerHTML = randomNumbers[3];
-numberFiveEl.innerHTML = randomNumbers[4];
+numberOneEl.innerHTML = `
+
+<div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+<div class="card-body">${randomNumbers[0]}</div>
+
+`;
+numberTwoEl.innerHTML = `
+
+<div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+<div class="card-body">${randomNumbers[1]}</div>
+
+`;
+numberThreeEl.innerHTML = `
+
+<div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+<div class="card-body">${randomNumbers[2]}</div>
+
+`;
+numberFourEl.innerHTML = `
+
+<div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+<div class="card-body">${randomNumbers[3]}</div>
+
+`;
+numberFiveEl.innerHTML = `
+
+<div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+<div class="card-body">${randomNumbers[4]}</div>
+
+`;
 
 
 // Generatore numeri random
@@ -55,16 +82,31 @@ function getRndNumber(min, max) {
 // Alla fine del timer switcho i numeri random con degli input
 setTimeout(() => {
 
-    numberOneEl.innerHTML = `<input id="userNumberOne" type="number" placeholder="Che numero era?"></input>`
-    numberTwoEl.innerHTML = `<input id="userNumberTwo" type="number" placeholder="Che numero era?"></input>`
-    numberThreeEl.innerHTML = `<input id="userNumberThree" type="number" placeholder="Che numero era?"></input>`
-    numberFourEl.innerHTML = `<input id="userNumberFour" type="number" placeholder="Che numero era?"></input>`
-    numberFiveEl.innerHTML = `<input id="userNumberFive" type="number" placeholder="Che numero era?"></input>`
+    numberOneEl.innerHTML = `
+    <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+    <div class="card-body"><input id="userNumberOne" type="number" placeholder="Numero?" class="form-control"></input></div>
+    `
+    numberTwoEl.innerHTML = `
+    <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+    <div class="card-body"><input id="userNumberTwo" type="number" placeholder="Numero?" class="form-control"></input></div>
+    `
+    numberThreeEl.innerHTML = `
+    <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+    <div class="card-body"><input id="userNumberThree" type="number" placeholder="Numero?" class="form-control"></input></div>
+    `
+    numberFourEl.innerHTML = `
+    <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+    <div class="card-body"><input id="userNumberFour" type="number" placeholder="Numero?" class="form-control"></input></div>
+    `
+    numberFiveEl.innerHTML = `
+    <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
+    <div class="card-body"><input id="userNumberFive" type="number" placeholder="Numero?" class="form-control"></input></div>
+    `
 
 
     buttonEl.classList.remove("d-none")
 
-}, 10000)
+}, 3000)
 
 // 
 formEl.addEventListener("submit", (event) => {
@@ -86,13 +128,15 @@ formEl.addEventListener("submit", (event) => {
 
 
 function numberValidator(value) {
+    counter = 0;
+    wrongNumbers = 0;
 
     for (let i = 0; i < randomNumbers.length; i++) {
         const singleNum = randomNumbers[i];
+        const userNum = value[i];
 
-        if (value == singleNum) {
+        if (userNum !== singleNum) {
             counter++
-        } else {
             wrongNumbers.push(randomNumbers[i])
         }
     }
@@ -100,3 +144,10 @@ function numberValidator(value) {
     const validatorOutput = document.createElement("div");
 }
 
+function displayCounter() {
+    timerEl.innerHTML = counter--
+
+    if (counter == 0) {
+    clearInterval(clock)
+    }
+}
