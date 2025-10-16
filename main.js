@@ -1,5 +1,6 @@
 // Variabili elementi contenitori
 const numbers = document.getElementById("numberContainer");
+const formEl = document.querySelector("form");
 
 // Variabili elementi numeri
 const numberOneEl = document.getElementById("numberOne");
@@ -29,12 +30,24 @@ function getRndNumber(min, max) {
 // Alla fine del timer switcho i numeri random con degli input
 setTimeout(() => {
 
-    numberOneEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
+    numberOneEl.innerHTML = `<input id="userNumberOne" type="number" placeholder="Che numero era?"></input>`
     numberTwoEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
     numberThreeEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
     numberFourEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
     numberFiveEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
 
+    
     buttonEl.classList.remove("d-none")
 
 }, 3000)
+
+formEl.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    const userOne = document.getElementById("userNumberOne");
+    const oneValue = userOne.value;
+    console.log(oneValue);
+    
+    
+    
+})
