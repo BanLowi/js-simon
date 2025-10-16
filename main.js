@@ -92,14 +92,11 @@ function numberValidator(value) {
 
         if (value == singleNum) {
             counter++
-            console.log(counter);
         } else {
             wrongNumbers.push(randomNumbers[i])
-            console.log(wrongNumbers);
-
         }
     }
 
-
+    const validatorOutput = document.createElement("div");
 }
 
