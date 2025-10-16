@@ -15,12 +15,27 @@ const buttonEl = document.querySelector("button.d-none");
 // Variabile contatore
 const counter = 0;
 
+// Array numeri random
+let randomNumbers = [];
+console.log(randomNumbers);
+
+randomNumbers = [
+    getRndNumber(1, 100),
+    getRndNumber(1, 100),
+    getRndNumber(1, 100),
+    getRndNumber(1, 100),
+    getRndNumber(1, 100)
+]
+
+
 // Inserisco un numero random da 1 a 100 in ogni elemento
-numberOneEl.innerHTML = getRndNumber(1, 100);
-numberTwoEl.innerHTML = getRndNumber(1, 100);
-numberThreeEl.innerHTML = getRndNumber(1, 100);
-numberFourEl.innerHTML = getRndNumber(1, 100);
-numberFiveEl.innerHTML = getRndNumber(1, 100);
+numberOneEl.innerHTML = randomNumbers[0];
+numberTwoEl.innerHTML = randomNumbers[1];
+numberThreeEl.innerHTML = randomNumbers[2];
+numberFourEl.innerHTML = randomNumbers[3];
+numberFiveEl.innerHTML = randomNumbers[4];
+
+
 
 // Generatore numeri random
 function getRndNumber(min, max) {
@@ -45,9 +60,17 @@ formEl.addEventListener("submit", (event) => {
     event.preventDefault()
 
     const userOne = document.getElementById("userNumberOne");
-    const oneValue = userOne.value;
-    console.log(oneValue);
-    
-    
-    
+    const oneValue = Number(userOne.value);
+
+    const userTwo = document.getElementById("userNumberTwo");
+    const TwoValue = Number(userTwo.value);
+
+    const userThree = document.getElementById("userNumberThree");
+    const ThreeValue = Number(userThree.value);
+
+    const userFour = document.getElementById("userNumberFour");
+    const FourValue = Number(userFour.alue);
+
+    const userFive = document.getElementById("userNumberFive");
+    const FiveValue = Number(userFive.value);
 })
