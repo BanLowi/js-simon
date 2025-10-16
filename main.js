@@ -2,6 +2,7 @@
 const numbers = document.getElementById("numberContainer");
 const formEl = document.querySelector("form");
 
+
 // Variabili elementi numeri
 const numberOneEl = document.getElementById("numberOne");
 const numberTwoEl = document.getElementById("numberTwo");
@@ -9,16 +10,21 @@ const numberThreeEl = document.getElementById("numberThree");
 const numberFourEl = document.getElementById("numberFour");
 const numberFiveEl = document.getElementById("numberFive");
 
+
 // Variabili elementi input
 const buttonEl = document.querySelector("button.d-none");
 
+
 // Variabile contatore
-const counter = 0;
+let counter = 0;
+console.log(counter);
+
+
 
 // Array numeri random
 let randomNumbers = [];
-console.log(randomNumbers);
 
+// Genero numeri random
 randomNumbers = [
     getRndNumber(1, 100),
     getRndNumber(1, 100),
@@ -36,7 +42,6 @@ numberFourEl.innerHTML = randomNumbers[3];
 numberFiveEl.innerHTML = randomNumbers[4];
 
 
-
 // Generatore numeri random
 function getRndNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -46,10 +51,10 @@ function getRndNumber(min, max) {
 setTimeout(() => {
 
     numberOneEl.innerHTML = `<input id="userNumberOne" type="number" placeholder="Che numero era?"></input>`
-    numberTwoEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
-    numberThreeEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
-    numberFourEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
-    numberFiveEl.innerHTML = `<input type="number" placeholder="Che numero era?"></input>`
+    numberTwoEl.innerHTML = `<input id="userNumberTwo" type="number" placeholder="Che numero era?"></input>`
+    numberThreeEl.innerHTML = `<input id="userNumberThree" type="number" placeholder="Che numero era?"></input>`
+    numberFourEl.innerHTML = `<input id="userNumberFour" type="number" placeholder="Che numero era?"></input>`
+    numberFiveEl.innerHTML = `<input id="userNumberFive" type="number" placeholder="Che numero era?"></input>`
 
     
     buttonEl.classList.remove("d-none")
@@ -73,4 +78,10 @@ formEl.addEventListener("submit", (event) => {
 
     const userFive = document.getElementById("userNumberFive");
     const FiveValue = Number(userFive.value);
+
+    if (oneValue == randomNumbers[0]) {
+        counter++
+        console.log(counter);
+        
+    }
 })
