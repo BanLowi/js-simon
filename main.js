@@ -20,9 +20,11 @@ let counter = 0;
 console.log(counter);
 
 
-
 // Array numeri random
 let randomNumbers = [];
+
+// Array numeri sbagliati
+let wrongNumbers = [];
 
 // Genero numeri random
 randomNumbers = [
@@ -61,6 +63,7 @@ setTimeout(() => {
 
 }, 3000)
 
+// 
 formEl.addEventListener("submit", (event) => {
     event.preventDefault()
 
@@ -68,20 +71,31 @@ formEl.addEventListener("submit", (event) => {
     const oneValue = Number(userOne.value);
 
     const userTwo = document.getElementById("userNumberTwo");
-    const TwoValue = Number(userTwo.value);
+    const twoValue = Number(userTwo.value);
 
     const userThree = document.getElementById("userNumberThree");
-    const ThreeValue = Number(userThree.value);
+    const threeValue = Number(userThree.value);
 
     const userFour = document.getElementById("userNumberFour");
-    const FourValue = Number(userFour.alue);
+    const fourValue = Number(userFour.alue);
 
     const userFive = document.getElementById("userNumberFive");
-    const FiveValue = Number(userFive.value);
+    const fiveValue = Number(userFive.value);
 
-    if (oneValue == randomNumbers[0]) {
-        counter++
-        console.log(counter);
-        
-    }
+
 })
+
+
+function numberValidator () {
+
+
+
+/*     if (oneValue == randomNumbers[0]) {
+        counter++
+        console.log(counter); 
+    } else {
+        wrongNumbers.push(randomNumbers[0])
+    } */
+    
+}
+
