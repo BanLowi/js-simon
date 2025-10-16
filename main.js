@@ -26,6 +26,9 @@ let randomNumbers = [];
 // Array numeri sbagliati
 let wrongNumbers = [];
 
+// Array numeri utente
+let userNumbers = [];
+
 // Genero numeri random
 randomNumbers = [
     getRndNumber(1, 100),
@@ -58,44 +61,45 @@ setTimeout(() => {
     numberFourEl.innerHTML = `<input id="userNumberFour" type="number" placeholder="Che numero era?"></input>`
     numberFiveEl.innerHTML = `<input id="userNumberFive" type="number" placeholder="Che numero era?"></input>`
 
-    
+
     buttonEl.classList.remove("d-none")
 
-}, 3000)
+}, 10000)
 
 // 
 formEl.addEventListener("submit", (event) => {
     event.preventDefault()
 
-    const userOne = document.getElementById("userNumberOne");
-    const oneValue = Number(userOne.value);
+    userNumbers = []
 
-    const userTwo = document.getElementById("userNumberTwo");
-    const twoValue = Number(userTwo.value);
+    userNumbers.push(
+        Number(document.getElementById("userNumberOne").value),
+        Number(document.getElementById("userNumberTwo").value),
+        Number(document.getElementById("userNumberThree").value),
+        Number(document.getElementById("userNumberFour").value),
+        Number(document.getElementById("userNumberFive").value)
+    );
 
-    const userThree = document.getElementById("userNumberThree");
-    const threeValue = Number(userThree.value);
-
-    const userFour = document.getElementById("userNumberFour");
-    const fourValue = Number(userFour.alue);
-
-    const userFive = document.getElementById("userNumberFive");
-    const fiveValue = Number(userFive.value);
-
+    numberValidator(userNumbers)
 
 })
 
 
-function numberValidator () {
+function numberValidator(value) {
+
+    for (let i = 0; i < randomNumbers.length; i++) {
+        const singleNum = randomNumbers[i];
+
+        if (value == singleNum) {
+            counter++
+            console.log(counter);
+        } else {
+            wrongNumbers.push(randomNumbers[i])
+            console.log(wrongNumbers);
+
+        }
+    }
 
 
-
-/*     if (oneValue == randomNumbers[0]) {
-        counter++
-        console.log(counter); 
-    } else {
-        wrongNumbers.push(randomNumbers[0])
-    } */
-    
 }
 
