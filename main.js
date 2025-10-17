@@ -17,7 +17,6 @@ const buttonEl = document.querySelector("button.d-none");
 
 // Variabili contatore
 let counter = 30;
-console.log(counter);
 const timerEl = document.getElementById("timer")
 const clock = setInterval(displayCounter, 1000)
 
@@ -39,6 +38,9 @@ randomNumbers = [
     getRndNumber(1, 100),
     getRndNumber(1, 100)
 ]
+// GAME CHEAT IN CONSOLE
+console.log("CHEAT " + randomNumbers);
+
 
 
 // Inserisco un numero random da 1 a 100 in ogni elemento
@@ -106,7 +108,12 @@ setTimeout(() => {
 
     buttonEl.classList.remove("d-none")
 
-}, 3000)
+}, 31000)
+
+
+// Variabile per card-header dopo la sua generazione
+const cardHeaderEl = document.querySelector(".card-header")
+console.log(cardHeaderEl);
 
 // 
 formEl.addEventListener("submit", (event) => {
@@ -128,26 +135,32 @@ formEl.addEventListener("submit", (event) => {
 
 
 function numberValidator(value) {
-    counter = 0;
-    wrongNumbers = 0;
+    
+    wrongNumbers = [];
 
     for (let i = 0; i < randomNumbers.length; i++) {
         const singleNum = randomNumbers[i];
         const userNum = value[i];
 
         if (userNum !== singleNum) {
-            counter++
             wrongNumbers.push(randomNumbers[i])
+            cardHeaderEl.innerHTML = `
+            <i class="bi bi-x-lg"></i>
+            `
         }
     }
 
     const validatorOutput = document.createElement("div");
+    validatorOutput.innerHTML = `
+    
+    `
 }
 
 function displayCounter() {
     timerEl.innerHTML = counter--
 
-    if (counter == 0) {
+    if (counter == -1) {
     clearInterval(clock)
+    timerEl.innerHTML = "INSERT THE NUMBERS SIMON SAID"
     }
 }
