@@ -18,7 +18,7 @@ const buttonEl = document.querySelector("button.d-none");
 // Variabili contatore
 let counter = 30;
 const timerEl = document.getElementById("timer")
-const clock = setInterval(displayCounter, 1000)
+let clock = setInterval(displayCounter, 1000)
 
 
 // Array numeri random
@@ -41,39 +41,43 @@ randomNumbers = [
 // GAME CHEAT IN CONSOLE
 console.log("CHEAT " + randomNumbers);
 
+// Funzione per generare l'interno delle card con numeri random
+function switchRandomNum(value1, value2, value3, value4, value5) {
 
-
-// Inserisco un numero random da 1 a 100 in ogni elemento
-numberOneEl.innerHTML = `
+value1.innerHTML = `
 
 <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
 <div class="card-body">${randomNumbers[0]}</div>
 
 `;
-numberTwoEl.innerHTML = `
+value2.innerHTML = `
 
 <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
 <div class="card-body">${randomNumbers[1]}</div>
 
 `;
-numberThreeEl.innerHTML = `
+value3.innerHTML = `
 
 <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
 <div class="card-body">${randomNumbers[2]}</div>
 
 `;
-numberFourEl.innerHTML = `
+value4.innerHTML = `
 
 <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
 <div class="card-body">${randomNumbers[3]}</div>
 
 `;
-numberFiveEl.innerHTML = `
+value5.innerHTML = `
 
 <div class="card-header bg-transparent border-0"><i class="bi bi-question-lg"></i></div>
 <div class="card-body">${randomNumbers[4]}</div>
 
 `;
+
+}
+// Inserisco un numero random da 1 a 100 in ogni elemento
+switchRandomNum(numberOneEl, numberTwoEl, numberThreeEl, numberFourEl, numberFiveEl)
 
 
 // Generatore numeri random
@@ -126,6 +130,10 @@ formEl.addEventListener("submit", (event) => {
     );
 
     numberValidator(userNumbers)
+
+    // Resetto il timer
+    counter = 30
+    clock = setInterval(displayCounter, 1000);
 
 })
 
