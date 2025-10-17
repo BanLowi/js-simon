@@ -111,11 +111,7 @@ setTimeout(() => {
 }, 31000)
 
 
-// Variabile per card-header dopo la sua generazione
-const cardHeaderEl = document.querySelector(".card-header")
-console.log(cardHeaderEl);
-
-// 
+// All'invio metto l'input utente in un array e lo valido 
 formEl.addEventListener("submit", (event) => {
     event.preventDefault()
 
@@ -136,6 +132,10 @@ formEl.addEventListener("submit", (event) => {
 
 function numberValidator(value) {
     
+    // Variabile per card-header dopo la sua generazione
+    let cardHeaderEl = document.querySelectorAll(".card-header")
+    console.log(cardHeaderEl);
+
     wrongNumbers = [];
 
     for (let i = 0; i < randomNumbers.length; i++) {
@@ -144,7 +144,7 @@ function numberValidator(value) {
 
         if (userNum !== singleNum) {
             wrongNumbers.push(randomNumbers[i])
-            cardHeaderEl.innerHTML = `
+            cardHeaderEl[i].innerHTML = `
             <i class="bi bi-x-lg"></i>
             `
         }
