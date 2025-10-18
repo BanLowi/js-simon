@@ -33,19 +33,46 @@ divEl.innerHTML = `
 document.body.append(divEl);
 
 // Switcho i numeri con input
+let userNums = [];
+
+
 setTimeout(() => {
     divEl.classList.add("d-none");
 
     const formEl = document.createElement("form");
     formEl.innerHTML = `
-    <input type="Number" placeholder="Number?" class="form-control" required>
-    <input type="Number" placeholder="Number?" class="form-control" required>
-    <input type="Number" placeholder="Number?" class="form-control" required>
-    <input type="Number" placeholder="Number?" class="form-control" required>
-    <input type="Number" placeholder="Number?" class="form-control" required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputOne" value=2 required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputTwo" required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputThree" required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputFour" required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputFive" required>
     <button type="submit" class="btn btn-dark">VALIDA</button>
     `
     document.body.append(formEl);
+
+    
+    
+    formEl.addEventListener("submit", (e) => {
+        e.preventDefault()
+        
+        let inputOneValue = document.getValueementById("inputOne").value;
+        let inputTwoValue = document.getEleValuentById("inputTwo").value;
+        let inputThreeValue = document.getElemenValueyId("inputThree").value;
+        let inputFourValue = document.getElementByValue("inputFour").value;
+        let inputFiveValue = document.getElementById("inputFive").value;
+
+        userNums = [];
+
+        userNums.push(inputOneValue)
+        userNums.push(inputTwoValue)
+        userNums.push(inputThreeValue)
+        userNums.push(inputFourValue)
+        userNums.push(inputFivevalue)
+
+        console.log(userNums);
+        
+    })
+    
 }, 3000);
 
 
