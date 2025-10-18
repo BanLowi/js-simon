@@ -41,7 +41,7 @@ setTimeout(() => {
 
     const formEl = document.createElement("form");
     formEl.innerHTML = `
-    <input type="Number" placeholder="Number?" class="form-control" id="inputOne" value=2 required>
+    <input type="Number" placeholder="Number?" class="form-control" id="inputOne" required>
     <input type="Number" placeholder="Number?" class="form-control" id="inputTwo" required>
     <input type="Number" placeholder="Number?" class="form-control" id="inputThree" required>
     <input type="Number" placeholder="Number?" class="form-control" id="inputFour" required>
@@ -55,10 +55,10 @@ setTimeout(() => {
     formEl.addEventListener("submit", (e) => {
         e.preventDefault()
         
-        let inputOneValue = document.getValueementById("inputOne").value;
-        let inputTwoValue = document.getEleValuentById("inputTwo").value;
-        let inputThreeValue = document.getElemenValueyId("inputThree").value;
-        let inputFourValue = document.getElementByValue("inputFour").value;
+        let inputOneValue = document.getElementById("inputOne").value;
+        let inputTwoValue = document.getElementById("inputTwo").value;
+        let inputThreeValue = document.getElementById("inputThree").value;
+        let inputFourValue = document.getElementById("inputFour").value;
         let inputFiveValue = document.getElementById("inputFive").value;
 
         userNums = [];
@@ -67,13 +67,24 @@ setTimeout(() => {
         userNums.push(inputTwoValue)
         userNums.push(inputThreeValue)
         userNums.push(inputFourValue)
-        userNums.push(inputFivevalue)
+        userNums.push(inputFiveValue)
 
         console.log(userNums);
-        
     })
     
 }, 3000);
 
+let score = 0;
+let correctNum = [];
 
+for (let i = 0; i < randomNumbers.length; i++) {
+    const singleRandom = randomNumbers[i];
+    const singleUser = Number(userNums[i]);
 
+    if (singleUser === singleRandom) {
+        score++
+        correctNum.push(singleUser)   
+    }    
+}
+
+    
