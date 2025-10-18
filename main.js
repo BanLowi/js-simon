@@ -8,8 +8,8 @@ function getRandomdNum(min, max) {
 function fillArrayRandomNum(array, quantity) {
 
     for (let i = 0; i < quantity; i++) {
-        const singleNum = getRandomdNum(1, 10)
-        
+        const singleNum = getRandomdNum(1, 10);
+
         // SE numero singolo generato NON è nell'array lo pusho ALTRIMENTI ciclo indietro
         if (!array.includes(singleNum)) {
             array.push(singleNum);
@@ -32,5 +32,21 @@ divEl.innerHTML = `
 `
 document.body.append(divEl);
 
-setTimeout()
+// Switcho i numeri con input
+setTimeout(() => {
+    divEl.classList.add("d-none");
+
+    const formEl = document.createElement("form");
+    formEl.innerHTML = `
+    <input type="Number" placeholder="Number?" class="form-control" required>
+    <input type="Number" placeholder="Number?" class="form-control" required>
+    <input type="Number" placeholder="Number?" class="form-control" required>
+    <input type="Number" placeholder="Number?" class="form-control" required>
+    <input type="Number" placeholder="Number?" class="form-control" required>
+    <button type="submit" class="btn btn-dark">VALIDA</button>
+    `
+    document.body.append(formEl);
+}, 3000);
+
+
 
