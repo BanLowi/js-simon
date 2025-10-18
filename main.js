@@ -31,14 +31,19 @@ divEl.innerHTML = `
  ${randomNumbers}
 `
 document.body.append(divEl);
+// GAME CHEAT
+console.log("CHEATS: " + randomNumbers);
 
-// Switcho i numeri con input
+// Array per risultati
 let userNums = [];
+let score = 0;
+let correctNum = [];
 
-
+// Timer di 30 secondi
 setTimeout(() => {
     divEl.classList.add("d-none");
-
+    
+    // Switcho i numeri con input
     const formEl = document.createElement("form");
     formEl.innerHTML = `
     <input type="Number" placeholder="Number?" class="form-control" id="inputOne" required>
@@ -50,41 +55,47 @@ setTimeout(() => {
     `
     document.body.append(formEl);
 
-    
-    
     formEl.addEventListener("submit", (e) => {
         e.preventDefault()
         
+        // Variabili valori input utente
         let inputOneValue = document.getElementById("inputOne").value;
         let inputTwoValue = document.getElementById("inputTwo").value;
         let inputThreeValue = document.getElementById("inputThree").value;
         let inputFourValue = document.getElementById("inputFour").value;
         let inputFiveValue = document.getElementById("inputFive").value;
 
+        // Svuoto l'array e pusho nuovi input
         userNums = [];
-
         userNums.push(inputOneValue)
         userNums.push(inputTwoValue)
         userNums.push(inputThreeValue)
         userNums.push(inputFourValue)
         userNums.push(inputFiveValue)
+        
+        // Ciclo per validare i numeri
+        for (let i = 0; i < randomNumbers.length; i++) {
+            const singleRandom = randomNumbers[i];
+            const singleUser = Number(userNums[i]);
+        
+            if (singleUser === singleRandom) {
+                score++
+                correctNum.push(singleUser)   
+            }
+        }
 
-        console.log(userNums);
+        const resultEl = document.createElement("div");
+        resultEl.innerHTML = `
+        <p>Numeri corretti: ${correctNum}</p>
+        <p>Punteggio: ${score}</p>
+        `
+        document.body.appendChild(resultEl)
     })
+
     
-}, 3000);
 
-let score = 0;
-let correctNum = [];
+}, 30000);
 
-for (let i = 0; i < randomNumbers.length; i++) {
-    const singleRandom = randomNumbers[i];
-    const singleUser = Number(userNums[i]);
 
-    if (singleUser === singleRandom) {
-        score++
-        correctNum.push(singleUser)   
-    }    
-}
 
     
