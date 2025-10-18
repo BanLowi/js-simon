@@ -10,7 +10,7 @@ function fillArrayRandomNum(array, quantity) {
     for (let i = 0; i < quantity; i++) {
         const singleNum = getRandomdNum(1, 10);
 
-        // SE numero singolo generato NON è nell'array lo pusho ALTRIMENTI ciclo indietro
+        // SE numero singolo NON è nell'array lo pusho ALTRIMENTI ciclo indietro
         if (!array.includes(singleNum)) {
             array.push(singleNum);
         } else {
